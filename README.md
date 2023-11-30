@@ -4,9 +4,9 @@ A simple PocketMine-MP plugin that lets your players claim unique rewards every 
 </p>
 
 # Commands
-| Command        | Description                                     | Usage           | Aliases | Permission                            |
-|----------------|-------------------------------------------------|-----------------|---------|---------------------------------------|
-| adventcalendar | Allows you to use the `/adventcalendar` command | /adventcalendar | advent  | adventcalendar.command.adventcalendar |
+| Command        | Description                         | Usage           | Aliases | Permission                            |
+|----------------|-------------------------------------|-----------------|---------|---------------------------------------|
+| adventcalendar | Opens the Advent calendar inventory | /adventcalendar | advent  | adventcalendar.command.adventcalendar |
 
 **All commands can be adjusted in the config file.**
 
