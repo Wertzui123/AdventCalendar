@@ -1,0 +1,11 @@
+name: AdventCalendar
+main: Wertzui123\AdventCalendar\Main
+version: 1.0
+api: 5.0.0
+load: POSTWORLD
+author: Wertzui123
+description: Lets your players claim unique rewards every day until Christmas
+permissions:
+  adventcalendar.command.adventcalendar:
+    description: Allows you to use the /adventcalendar command
+    default: true

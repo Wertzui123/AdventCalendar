@@ -1,0 +1,11 @@
+---
+prefix: "§l§4Advent §qCalendar §r§8» §r"
+command:
+  adventcalendar:
+    noPermission: "§cYou are not allowed to use this command!"
+    runIngame: "§cYou can only use this command ingame!"
+inventory:
+  title: "§l§4Advent §qCalendar"
+  day: "Day {day}"
+join_reminder: "§hYou haven't claimed your Advent calendar rewards for today yet! Use §g/adventcalendar §hto do so!"
+...

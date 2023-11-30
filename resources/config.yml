@@ -1,0 +1,30 @@
+---
+# Don't edit this if you don't know what you're doing
+config-version: "1.0"
+
+# The /adventcalendar command
+command:
+ command: "adventcalendar"
+ description: "Opens the Advent calendar inventory"
+ usage: "/adventcalendar"
+ aliases: ["advent"]
+
+# The rewards (as commands) for each day
+# You can provide default rewards using the `default` key and rewards for a specific day using the day as the key
+# The day has to be a number between 1 and 24
+# IMPORTANT: Use \" instead of normal quotes
+# {player} is the player who claimed their rewards
+rewards:
+ default:
+  - "give {player} gold_ingot 5"
+  - "addmoney {player} 100"
+ 6:
+  - "give Wertzui123456 gold_hoe 1 {display:{Name:\"§r§hSaint §4Nicholas §eStaff\"}}"
+  - "addmoney {player} 500"
+ 24:
+  - "give {player} diamond 64"
+  - "addmoney {player} 1000"
+
+# Whether to remind players to claim their rewards when they join
+remind-on-join: true
+...
