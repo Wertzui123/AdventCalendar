@@ -1,0 +1,12 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Wertzui123/AdventCalendar
+build-by-default: true
+branches:
+- main
+projects:
+  AdventCalendar:
+    path: ""
+    libs:
+      - src: muqsit/InvMenu/InvMenu
+        version: ^4.6.3
+        branch: pm5
+...
