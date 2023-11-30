@@ -173,6 +173,7 @@ class Main extends PluginBase
     }
 
     /**
+     * @internal
      * Checks whether the given player has claimed their rewards for the given day
      * @param Player $player
      * @param int $day
@@ -196,6 +197,7 @@ class Main extends PluginBase
     }
 
     /**
+     * @internal
      * Marks the given player as having claimed their rewards today
      * @param Player $player
      * @throws \JsonException
@@ -211,6 +213,7 @@ class Main extends PluginBase
     }
 
     /**
+     * @internal
      * Checks whether the config version is the latest and updates it if it isn't
      */
     private function configUpdater()
