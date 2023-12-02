@@ -28,6 +28,10 @@ class AdventCalendarCommand extends Command
             $sender->sendMessage($this->plugin->getMessage('command.adventcalendar.runIngame'));
             return;
         }
+        if (date('n') !== '12') {
+            $sender->sendMessage($this->plugin->getMessage('command.adventcalendar.notDecember'));
+            return;
+        }
         $this->plugin->openAdventCalendarInventory($sender);
     }
 

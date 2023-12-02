@@ -1,6 +1,6 @@
 ---
 # Don't edit this if you don't know what you're doing
-config-version: "1.0"
+config-version: "1.1"
 
 # The /adventcalendar command
 command:

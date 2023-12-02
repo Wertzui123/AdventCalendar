@@ -25,7 +25,7 @@ class EventListener implements Listener
 
     public function onJoin(PlayerJoinEvent $event)
     {
-        if ($this->plugin->getConfig()->get('remind-on-join') === true && !$this->plugin->hasTodayClaimed($event->getPlayer())) {
+        if ($this->plugin->getConfig()->get('remind-on-join') === true && date('n') === '12' && !$this->plugin->hasTodayClaimed($event->getPlayer())) {
             $event->getPlayer()->sendMessage($this->plugin->getMessage('join_reminder'));
         }
     }

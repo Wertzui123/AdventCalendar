@@ -4,6 +4,7 @@ command:
   adventcalendar:
     noPermission: "§cYou are not allowed to use this command!"
     runIngame: "§cYou can only use this command ingame!"
+    notDecember: "§cYou can only use this command in December!"
 inventory:
   title: "§l§4Advent §qCalendar"
   day: "Day {day}"

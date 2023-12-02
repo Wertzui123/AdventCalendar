@@ -28,7 +28,7 @@ use Wertzui123\AdventCalendar\events\DayClaimEvent;
 class Main extends PluginBase
 {
 
-    const CONFIG_VERSION = '1.0';
+    const CONFIG_VERSION = '1.1';
 
     private string $prefix;
     private Config $stringsFile;
