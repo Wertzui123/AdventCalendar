@@ -148,13 +148,12 @@ class Main extends PluginBase
                 if ($dayIndex < 24) {
                     $color = DyeColor::RED();
                     if ($currentDay > ($dayIndex + 1)) {
-                        if ($this->hasDayClaimed($player, $currentDay)) {
+                        if ($this->hasDayClaimed($player, $dayIndex + 1)) {
                             $color = DyeColor::BLUE();
                         } else {
                             $color = DyeColor::GRAY();
                         }
-                    } elseif
-                    ($currentDay === ($dayIndex + 1)) {
+                    } elseif ($currentDay === ($dayIndex + 1)) {
                         if ($this->hasDayClaimed($player, $currentDay)) {
                             $color = DyeColor::LIGHT_BLUE();
                         } else {
@@ -182,7 +181,9 @@ class Main extends PluginBase
     private function hasDayClaimed(Player $player, int $day)
     {
         $year = $this->getClaimedFile()->get(date('Y'), []);
-        $day = $year[(string)$day] ?? [];
+        $strDay = (string)$day;
+        if ($day < 10) $strDay = '0' . $strDay;
+        $day = $year[$strDay] ?? [];
         return in_array(strtolower($player->getName()), $day);
     }
 
@@ -206,7 +207,9 @@ class Main extends PluginBase
     {
         $year = $this->getClaimedFile()->get(date('Y'), []);
         $day = $year[date('d')] ?? [];
-        $day[] = strtolower($player->getName());
+        if (!in_array(strtolower($player->getName()), $day)) {
+            $day[] = strtolower($player->getName());
+        }
         $year[date('d')] = $day;
         $this->getClaimedFile()->set(date('Y'), $year);
         $this->getClaimedFile()->save();
