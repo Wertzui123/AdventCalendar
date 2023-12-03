@@ -104,7 +104,7 @@ class Main extends PluginBase
         $menu->setListener(function (InvMenuTransaction $transaction): InvMenuTransactionResult {
             if ($transaction->getItemClicked()->getTypeId() === ItemTypeIds::fromBlockTypeId(BlockTypeIds::WOOL) && $transaction->getItemClicked()->getBlock()->getColor() === DyeColor::GREEN()) {
                 if (!$this->hasTodayClaimed($transaction->getPlayer())) {
-                    $event = new DayClaimEvent($transaction->getPlayer(), $this->getConfig()->getNested('rewards.' . date('d'), $this->getConfig()->getNested('rewards.default')));
+                    $event = new DayClaimEvent($transaction->getPlayer(), $this->getConfig()->getNested('rewards.' . date('j'), $this->getConfig()->getNested('rewards.default')));
                     $event->call();
                     if ($event->isCancelled()) {
                         NetworkBroadcastUtils::broadcastPackets([$transaction->getPlayer()], (new AnvilFallSound())->encode($transaction->getPlayer()->getPosition()));
@@ -137,7 +137,7 @@ class Main extends PluginBase
     private function fillInventory(Inventory $inventory, Player $player)
     {
         $dayIndex = 0;
-        $currentDay = intval(date('d'));
+        $currentDay = intval(date('j'));
         for ($i = 0; $i < $inventory->getSize(); $i++) {
             if (!isset($this->playerUIProfiles[strtolower($player->getName())])) $this->playerUIProfiles[strtolower($player->getName())] = 0;
             $condition = match ($this->playerUIProfiles[strtolower($player->getName())]) {
@@ -181,9 +181,7 @@ class Main extends PluginBase
     private function hasDayClaimed(Player $player, int $day)
     {
         $year = $this->getClaimedFile()->get(date('Y'), []);
-        $strDay = (string)$day;
-        if ($day < 10) $strDay = '0' . $strDay;
-        $day = $year[$strDay] ?? [];
+        $day = $year[(string)$day] ?? $year['0' . $day] ?? []; // '0' . for BC
         return in_array(strtolower($player->getName()), $day);
     }
 
@@ -194,7 +192,7 @@ class Main extends PluginBase
      */
     public function hasTodayClaimed(Player $player)
     {
-        return $this->hasDayClaimed($player, intval(date('d')));
+        return $this->hasDayClaimed($player, intval(date('j')));
     }
 
     /**
@@ -206,11 +204,11 @@ class Main extends PluginBase
     private function setTodayClaimed(Player $player)
     {
         $year = $this->getClaimedFile()->get(date('Y'), []);
-        $day = $year[date('d')] ?? [];
+        $day = $year[date('j')] ?? [];
         if (!in_array(strtolower($player->getName()), $day)) {
             $day[] = strtolower($player->getName());
         }
-        $year[date('d')] = $day;
+        $year[date('j')] = $day;
         $this->getClaimedFile()->set(date('Y'), $year);
         $this->getClaimedFile()->save();
     }
