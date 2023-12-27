@@ -7,10 +7,13 @@ namespace Wertzui123\AdventCalendar\commands;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\PluginOwnedTrait;
 use Wertzui123\AdventCalendar\Main;
 
-class AdventCalendarCommand extends Command
+class AdventCalendarCommand extends Command implements PluginOwned
 {
+    use PluginOwnedTrait;
 
     private $plugin;
 
